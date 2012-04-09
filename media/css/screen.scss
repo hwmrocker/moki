@@ -1,0 +1,249 @@
+/******************************************************************************/
+/*                             Less CSS File                                  */
+/******************************************************************************/
+
+@import "reset.scss";
+@import "960_12_col.scss";
+@import "text.scss";
+
+/*** Fonts ***/
+@font-face {
+    font-family: 'ComicZineOTRegular';
+    src: url('/media/fonts/comic_zine_ot-webfont.eot');
+    src: url('/media/fonts/comic_zine_ot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/media/fonts/comic_zine_ot-webfont.woff') format('woff'),
+         url('/media/fonts/comic_zine_ot-webfont.ttf') format('truetype'),
+         url('/media/fonts/comic_zine_ot-webfont.svg#ComicZineOTRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'HamburgerHeavenRegular';
+    src: url('/media/fonts/HAMBH___-webfont.eot');
+    src: url('/media/fonts/HAMBH___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/media/fonts/HAMBH___-webfont.woff') format('woff'),
+         url('/media/fonts/HAMBH___-webfont.ttf') format('truetype'),
+         url('/media/fonts/HAMBH___-webfont.svg#HamburgerHeavenRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*** simple gradiant ***/
+@mixin glossy_gradient_3($color: hsl(88,54%,65%)){
+    $color1: hsl(hue($color),32%,92%);
+    $color2: hsl(hue($color),23%,84%);
+    $color3: hsl(hue($color),18%,70%);
+
+    $color4: hsl(hue($color),20%,64%);
+    $color5: hsl(hue($color),11%,49%);
+    $color6: hsl(hue($color),11%,34%);
+
+    background: $color; /* Old browsers */
+    background: -moz-linear-gradient(top, $color1 0%, $color2 13%, $color3 50%, $color4 54%, $color5 85%, $color6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color1), color-stop(13%,$color2), color-stop(50%,$color3), color-stop(54%,$color4), color-stop(85%,$color5), color-stop(100%,$color6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* IE10+ */
+
+    background: linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* W3C */
+}
+
+@mixin glossy_gradient($color: hsla(88,54%,65%,1)){
+    $color1: lighten(desaturate(adjust-hue($color, -2), 30%), 50%); /*hsla(88,32%,92%,1)*/
+    $color2: lighten(desaturate(adjust-hue($color, -1), 15%), 40%); /*hsla(89,23%,84%,1)*/
+    $color3: lighten(desaturate(adjust-hue($color, -1), 5%), 5%);  /*hsla(89,18%,70%,1)*/
+
+    $color4: darken(desaturate(adjust-hue($color, 0), 0%), 0%);     /*hsla(90,20%,64%,1)*/
+    $color5: darken(desaturate(adjust-hue($color, 1), 15%), 10%);   /*hsla(90,11%,49%,1)*/
+    $color6: darken(desaturate(adjust-hue($color, 2), 30%), 20%);   /*hsla(91,11%,34%,1)*/
+    
+    background: #ebf1e4; /* Old browsers */
+    background: -moz-linear-gradient(top, $color1 0%, $color2 13%, $color3 50%, $color4 54%, $color5 85%, $color6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color1), color-stop(13%,$color2), color-stop(50%,$color3), color-stop(54%,$color4), color-stop(85%,$color5), color-stop(100%,$color6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* IE10+ */
+
+    background: linear-gradient(top, $color1 0%,$color2 13%,$color3 50%,$color4 54%,$color5 85%,$color6 100%); /* W3C */
+}
+
+@mixin gradient($ausrichtung: top, $start: #fff, $end: #6161ff) {
+    background:-moz-linear-gradient($ausrichtung, $start, $end); /* Firefox */
+    background:-webkit-linear-gradient($ausrichtung, $start, $end); /* Safari, Chrome - neue Syntax! */
+    background:-o-linear-gradient($ausrichtung, $start, $end); /* Opera */
+    background:-ms-linear-gradient($ausrichtung, $start, $end); /* IE */
+    background:linear-gradient($ausrichtung, $start, $end); /* W3C Standard */
+    background-color: $end;
+}
+
+@mixin border-radius ($radius: 10px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin shadow ($x: 0, $y:0, $radius: 5px, $color: #888) {
+    -moz-box-shadow: $x $y $radius $color;
+    -webkit-box-shadow: $x $y $radius $color;
+    box-shadow: $x $y $radius $color;
+}
+
+html { height: 100%; }
+body {
+    @include gradient(top, #fff, #9191ff);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 30px auto;
+}
+
+
+img {
+    border : 0px;
+}
+
+
+
+h1, h2 {
+    font-weight:normal;
+    margin-bottom:0.5em;
+    font-family:HamburgerHeavenRegular,san-serif;
+}
+h2 {
+    padding-top: 0.7em;
+    font-size: 21px;
+}
+
+//h2:first-letter { font-size:150%; font-weight: bold; }
+
+p { margin-top: 0px;}
+
+.shadowbox {
+    @include shadow();
+}
+
+div.body {
+    @include gradient(top, #AFDDE5, #fff);
+    @include shadow;
+    @include border-radius;
+
+    margin: 30px auto;
+    padding-bottom: 30px;
+    width:960px;
+}
+
+div.header {
+    padding : 10px;
+    h1 {
+        margin-top: 32px;
+        font-size: 3em;
+    }
+}
+div.content {
+    clear:both;
+}
+
+
+div.content {
+    padding-top: 20px;
+}
+
+.filmbox {
+    a {
+        text-decoration: none;
+        color: black;
+        p.filmdatum { 
+            margin-bottom: 0.5em;
+            background: #E6E6FA;
+        }
+
+        p.filmtitel { 
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+}
+
+/**** Filmbox ****/
+.filmbox {
+    text-align: center;
+}
+
+/**** Menu ****/
+div.menu {
+    $menucolor: #a82f34;
+    height:40px;
+    padding:0;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    clear:both;
+    @include glossy_gradient($menucolor);
+
+    div.sitelink {
+        float:left;
+        width:200px;
+        height:40px;
+
+        a, .glossy {
+            margin: auto;
+            position: relative;
+            top: 8px;
+            left: 10px;
+            color: #FFFFE0;
+            font-weight: bold;
+            font-size: 20px;
+            font-family:HamburgerHeavenRegular,san-serif;
+        }
+        &:hover {
+            a, .glossy {
+                color: #000;
+            }
+            @include glossy_gradient(darken($menucolor, 5));
+        }
+        &:active {
+            a, .glossy {
+                color: #000;
+                top: 10px;
+            }
+            @include glossy_gradient(darken($menucolor, 7));
+        }
+        div.glossy {
+          .ie {
+              background:url('../pix/glossy.png');
+          }
+          width:100%;
+          height:100%
+        }
+    }
+}
+/*@font-face { font-family:"Secret Service Typewriter"; src: url("SECRETST.TTF") format("truetype"); }*/
+
+
+.logo {
+    float: left;
+    margin: 20px;
+}
+
+
+span.movie_title {
+
+    font-family:HamburgerHeavenRegular,san-serif;
+}
+.date {
+    font-style: italic;
+}
+/* Definition fuer Hyperlinkerscheinung         *//*
+a {font-family:Secret Service Typewriter,Courier New;  font-size:12pt; text-decoration:none;}
+a:link { color:#012345;}
+a:visited { color:#4F4F4F;}
+a:active { color:#FF9F00;}
+a:hover { color:#CDCDCD;}
+
+img.p { cursor:pointer;}
+*/
+
+/****************************** Album ***********************************************/
+

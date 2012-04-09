@@ -1,0 +1,6 @@
+django
+sorl-thumbnail
+django-evolution
+django-extensions
+flup
+markdown

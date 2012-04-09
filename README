@@ -1,0 +1,13 @@
+
+
+Dies muss noch installiert werden
+---------------------------------
+
+	#lessc installieren
+	sudo apt-get install rubygems1.8
+	sudo gem install rubygems-update
+	export PATH=$PATH:/var/lib/gems/1.8/bin
+	sudo update_rubygems     
+	sudo gem install less
+	sudo ln -s /var/lib/gems/1.8/bin/lessc /usr/bin/lessc
+

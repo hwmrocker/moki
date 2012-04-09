@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}www.montagskino.de - Das Studentenkino in Weingarten{% endblock %}
+
+{% block content %}
+    {% for film in Filme.current_semester %}
+    <div class="filmbox grid_2">
+        <a href="{{film.url}}">
+            {% thumbnail film.cover "140x195" crop="center" as cover %}
+                <img src="{{ cover.url }}">
+            {% endthumbnail %}
+            <p class="filmdatum">{{film.date}}</p>
+            <p class="filmtitel">{{film.titel}}</p>
+        </a>
+    </div>
+    {% if forloop.counter|divisibleby:"6" %}
+        <div class="clear"></div>
+    {% endif %}
+    {% endfor %}
+{% endblock %}

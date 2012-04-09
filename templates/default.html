@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block title %}www.montagskino.de - Das Studentenkino in Weingarten{% endblock %}
+
+{% block content %}
+    <div class="simple_content grid_12">
+        <h1>{{site_obj.headline}}</h1>
+        {{site_obj.body|markdown:"safe"}}
+    </div>
+{% endblock %}

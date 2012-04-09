@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}www.montagskino.de - Das Studentenkino in Weingarten{% endblock %}
+
+{% block content %}
+    <div class="filmcover grid_4 push_1">
+        {% thumbnail film.cover "300" crop="center" as cover %}
+            <img src="{{ cover.url }}">
+        {% endthumbnail %}
+    </div>
+    <div class="filmcontent grid_5 push_2">
+        <p class="filmthema">{{film.thema}}</p>
+        <h1>{{film.titel}}</h1>
+
+        <p class="filmbeschreibung">{{film.description}}</p>
+        <p class="date">{{film.date}}</p>
+    </div>
+{% endblock %}
