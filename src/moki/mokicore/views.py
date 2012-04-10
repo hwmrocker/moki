@@ -3,6 +3,12 @@ from models import Film, MokiAdmin, SimpleSite
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from datetime import datetime
+from django.core.context_processors import csrf
+
+import logging
+logger = logging.getLogger('custom')
+dbg = logger.debug
+
 
 def render_to_response(template_name, dictionary=None, context_instance=None, mimetype="text/html", request=None):
     from django.shortcuts import render_to_response
@@ -17,6 +23,8 @@ def render_to_response(template_name, dictionary=None, context_instance=None, mi
             context = RequestContext(request)
         else:
             context = None
+
+    context.update(csrf(request))
     return render_to_response(template_name, global_dictionary, context_instance=context, mimetype=mimetype)
 
 def index(request):

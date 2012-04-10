@@ -1,0 +1,14 @@
+.bzr*
+*.pyc
+*.pyo
+*.swp
+*.pid
+*.db
+*~
+*.scssc
+settings.py
+media/admin
+media/cache
+.project
+.pydevproject
+log
