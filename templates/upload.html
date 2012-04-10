@@ -7,8 +7,7 @@
     <form method="post">
 {% endif %}
 {% csrf_token %}
-{{ form }}
-foo
+{{ form.as_p }}
 <input type="submit">
 </form>
 {% endblock %}
