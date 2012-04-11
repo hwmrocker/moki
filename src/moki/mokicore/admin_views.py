@@ -7,7 +7,7 @@ from datetime import datetime
 import imdb
 import urllib2
 from urlparse import urlparse
-from django.core.files import File
+from django.core.files.base import ContentFile
 
 import logging
 logger = logging.getLogger('custom')
@@ -31,9 +31,9 @@ def movie_upload(request):
 
 def handle_uploaded_file(fileh):
     q = imdb.IMDb()
-    dbg(len(fileh))
     for line in fileh.readlines():
         mid, date, thema, aktion = line.split('|')
+        dbg(', '.join([mid, date, thema, aktion]))
         m = q.get_movie(mid)
         newf = Film()
         newf.titel = m['title']
@@ -44,7 +44,8 @@ def handle_uploaded_file(fileh):
         newf.date = datetime.strptime(date,'%d.%m.%Y')
         cover_url = m.get('full-size cover url')
         if cover_url:
+            dbg(' %s'%cover_url)
             newf.cover.save(date+'.jpg',
-                            File(urllib2.urlopen(cover_url).read()),
+                            ContentFile(urllib2.urlopen(cover_url).read()),
                             save=True)
         newf.save()
