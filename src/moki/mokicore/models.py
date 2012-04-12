@@ -8,8 +8,10 @@ from django.template.defaultfilters import slugify
 class FilmManager(models.Manager):
     use_for_related_fields = True
     def current_semester(self):
-        return self.filter(date__gt=datetime(2011,10,1))\
-                   .filter(date__lt=datetime(2012,3,1))
+        return self.filter(date__gt=datetime(2012,3,1))\
+                   .filter(date__lt=datetime(2012,9,1))
+
+
 class Film(models.Model):
     titel = models.CharField(max_length=200)
     thema = models.CharField(max_length=50, null=True, blank=True)
@@ -33,7 +35,6 @@ class Film(models.Model):
         return reverse("mokicore.views.film", 
                        kwargs={"film_id": self.pk,
                                "site": self.url_titel})
-
 
 
 class MokiAdmin(models.Model):
