@@ -8,6 +8,7 @@ import imdb
 import urllib2
 from urlparse import urlparse
 from django.core.files.base import ContentFile
+from django.contrib.auth.decorators import login_required
 
 import logging
 logger = logging.getLogger('custom')
@@ -19,6 +20,7 @@ class UploadFileForm(forms.Form):
     file  = forms.FileField()
 
 
+@login_required
 def movie_upload(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
