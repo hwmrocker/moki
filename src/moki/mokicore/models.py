@@ -7,9 +7,14 @@ from django.template.defaultfilters import slugify
 
 class FilmManager(models.Manager):
     use_for_related_fields = True
+
+    def get_query_set(self):
+        return super(FilmManager, self).get_query_set().order_by('date')
+
     def current_semester(self):
         return self.filter(date__gt=datetime(2012,3,1))\
-                   .filter(date__lt=datetime(2012,9,1))
+                   .filter(date__lt=datetime(2012,9,1))\
+                   .order_by('date')
 
 
 class Film(models.Model):
