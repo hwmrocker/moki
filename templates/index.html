@@ -8,17 +8,20 @@
 {% block content %}
 
 
-{% if next_movie %}
 <div class="grid_6 push_1">
     {{site_obj.body|markdown}}
 </div>
 <div class="grid_3 push_2">
-    <p>Als nächstes läuft: <span class="movie_title">{{next_movie.titel}}<span></p>
-    {% thumbnail next_movie.cover "220" crop="center" as cover %}
-        <img src="{{ cover.url }}">
-    {% endthumbnail %}
-    <p><span class="date">{{next_movie.date}}</span></p>
-    <a href="{{next_movie.url}}">Mehr Informationen</a>
+    {% if next_movie %}
+        <p>Als nächstes läuft: <span class="movie_title">{{next_movie.titel}}<span></p>
+        {% thumbnail next_movie.cover "220" crop="center" as cover %}
+            <img src="{{ cover.url }}">
+        {% endthumbnail %}
+        <p><span class="date">{{next_movie.date}}</span></p>
+        <a href="{{next_movie.url}}">Mehr Informationen</a>
+
+    {% else %}
+        <p>Der nächste Film steht leider noch nicht fest.</p>
+    {% endif %}
 </div>
-{% endif %}
 {% endblock %}
