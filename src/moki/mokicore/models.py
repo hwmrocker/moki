@@ -24,19 +24,25 @@ class Film(models.Model):
     def __unicode__(self):
         return u"Film(%s) - %s" % (self.pk, self.titel)
 
+    @property
     def url_titel(self):
         return slugify(self.titel)
 
+    @property
     def url(self):
         return reverse("mokicore.views.film", 
                        kwargs={"film_id": self.pk,
                                "site": self.url_titel})
+
+
+
 class MokiAdmin(models.Model):
     user = models.OneToOneField(User)
     bild = ImageField(upload_to='user/face', null=True)
 
     def __unicode__(self):
         return u"MokiAdmin(%s) - %s" % (self.pk, self.name)
+
 
 class SimpleSite(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
