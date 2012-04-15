@@ -12,8 +12,8 @@ class FilmManager(models.Manager):
         return super(FilmManager, self).get_query_set().order_by('date')
 
     def current_semester(self):
-        return self.filter(date__gt=datetime(2012,3,1))\
-                   .filter(date__lt=datetime(2012,9,1))\
+        return self.filter(date__gt=datetime(2012,4,14))\
+                   .filter(date__lt=datetime(2012,8,15))\
                    .order_by('date')
 
 
